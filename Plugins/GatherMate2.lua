@@ -31,13 +31,20 @@ end
 
 local amount_of = {}
 local function Summarize(data, zone)
+	--ViragDevTool_AddData({data, zone}, "Summarize")
 	LN = LibStub("AceLocale-3.0"):GetLocale("GatherMate2Nodes", true) -- Workaround LoD of GatherMate2 if AddonLoader is used.
+	--ViragDevTool_AddData({GatherMate2.gmdbs}, "GatherMate2.gmdbs")
 	for db_type, db_data in pairs(GatherMate2.gmdbs) do
+		-- ViragDevTool_AddData(db_type, "for db_type")
+		-- ViragDevTool_AddData(db_data, "for db_data")
 		-- reuse table
 		wipe(amount_of)
 		-- only look for data for this currentzone
 		local mapFile = Routes.zoneData[zone][4]
-		local zoneID = GatherMate2.mapData:MapAreaId(mapFile)
+		local zoneID = GatherMate2.mapData:MapAreaId(mapFile) + 1 -- We need to do a + 1 here as GatherMate2 have all ids + 1 in later verisions to follow blizz map change.
+		-- ViragDevTool_AddData(mapFile, "mapFile")
+		-- ViragDevTool_AddData(zoneID, "zoneID")
+		-- ViragDevTool_AddData(db_data[zoneID], "db_data[zoneID]")
 		if db_data[zoneID] then
 			-- count the unique values (structure is: location => itemID)
 			for _,node in pairs(db_data[zoneID]) do
@@ -63,7 +70,7 @@ local translate_db_type = {
 	["Fishing"] = "Fishing",
 	["Extract Gas"] = "ExtractGas",
 	["Treasure"] = "Treasure",
-	["Archaeology"] = "Archaeology",
+	--["Archaeology"] = "Archaeology",
 }
 local function AppendNodes(node_list, zone, db_type, node_type)
 	if type(GatherMate2.gmdbs[db_type]) == "table" then
