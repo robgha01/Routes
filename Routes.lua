@@ -725,10 +725,18 @@ end)
 -- for inserting into relevant routes
 -- Zone name must be localized, node_name can be english or localized
 function Routes:InsertNode(zone, coord, node_name)
+	--ViragDevTool_AddData({zone, coord, node_name}, "Routes:InsertNode")
+	--ViragDevTool_AddData(self.zoneData[zone], "self.zoneData[zone]")
+	--ViragDevTool_AddData(self.zoneData[zone][4], "self.zoneData[zone][4]")
+	--ViragDevTool_AddData(db.routes, "db.routes")
 	for route_name, route_data in pairs( db.routes[ self.zoneData[zone][4] ] ) do
+		--ViragDevTool_AddData({route_name, route_data}, "for route_name, route_data in pairs( db.routes[ self.zoneData[zone][4] ] ) do")
 		-- for every route check if the route is created with this node
+		--ViragDevTool_AddData(route_data.selection, "if route_data.selection then")
 		if route_data.selection then
 			for k, v in pairs(route_data.selection) do
+				-- ViragDevTool_AddData({k, v}, "for k, v in pairs(route_data.selection) do")
+				-- ViragDevTool_AddData({k == node_name or v == node_name}, "if k == node_name or v == node_name then")
 				if k == node_name or v == node_name then
 					-- Add the node
 					local x, y = self:getXY(coord)
@@ -741,6 +749,7 @@ function Routes:InsertNode(zone, coord, node_name)
 					if flag then
 						tinsert(route_data.taboolist, coord)
 					else
+						--ViragDevTool_AddData({route_data.route, route_data.metadata, zone, coord, route_data.cluster_dist or 65}, "self.TSP:InsertNode")
 						route_data.length = self.TSP:InsertNode(route_data.route, route_data.metadata, zone, coord, route_data.cluster_dist or 65) -- 65 is the old default
 						throttleFrame:Show()
 					end

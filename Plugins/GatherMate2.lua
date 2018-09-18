@@ -101,11 +101,13 @@ end
 source.AppendNodes = AppendNodes
 
 local function InsertNode(event, zone, nodeType, coord, node_name)
+	--ViragDevTool_AddData({event, zone, nodeType, coord, node_name}, "InsertNode")
 	-- Convert coords
 	local x, y, l = GatherMate2.mapData:DecodeLoc(coord) -- ignore level for now
 	local newCoord = Routes:getID(x, y)
 	-- Convert zone
 	local zoneLocalized = GatherMate2.mapData:MapLocalize(zone)
+	--ViragDevTool_AddData(zoneLocalized, "zoneLocalized")
 	Routes:InsertNode(zoneLocalized, newCoord, node_name)
 end
 
