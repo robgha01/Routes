@@ -7,4 +7,4 @@ Download the repo and unzip it in interface addon folder be sure to rename Route
 https://www.wowace.com/projects/routes
 
 ## Changelog
-2018-09-18 Added support for GatherMate2
+* 2018-09-18 Added support for GatherMate2
