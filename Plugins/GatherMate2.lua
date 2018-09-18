@@ -41,7 +41,7 @@ local function Summarize(data, zone)
 		wipe(amount_of)
 		-- only look for data for this currentzone
 		local mapFile = Routes.zoneData[zone][4]
-		local zoneID = GatherMate2.mapData:MapAreaId(mapFile) + 1 -- We need to do a + 1 here as GatherMate2 have all ids + 1 in later verisions to follow blizz map change.
+		local zoneID = GatherMate2.mapData:MapAreaId(mapFile) --+ 1 -- We need to do a + 1 here as GatherMate2 have all ids + 1 in later verisions to follow blizz map change.
 		-- ViragDevTool_AddData(mapFile, "mapFile")
 		-- ViragDevTool_AddData(zoneID, "zoneID")
 		-- ViragDevTool_AddData(db_data[zoneID], "db_data[zoneID]")
@@ -78,7 +78,7 @@ local function AppendNodes(node_list, zone, db_type, node_type)
 
 		-- Find all of the notes
 		local mapFile = Routes.zoneData[zone][4]
-		local zoneID = GatherMate2.mapData:MapAreaId(mapFile) + 1 -- We need to do a + 1 here as GatherMate2 have all ids + 1 in later verisions to follow blizz map change.
+		local zoneID = GatherMate2.mapData:MapAreaId(mapFile) --+ 1 -- We need to do a + 1 here as GatherMate2 have all ids + 1 in later verisions to follow blizz map change.
 		for loc, t in pairs(GatherMate2.gmdbs[db_type][zoneID]) do
 			-- And are of a selected type - store
 			if t == node_type then
