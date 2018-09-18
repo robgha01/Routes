@@ -1,0 +1,23 @@
+tag v1.3.0
+fc9f0fa55c3e0b14b9913cc56b43d62770f30930
+Xinhuan <xinhuan@pacific.net.sg>
+2010-10-18 06:49:16 +0800
+
+Tagging v1.3.0 for release. If anything is bugged, it won't be fixed until after Blizzcon.
+
+
+--------------------
+Areasis:
+	- Backported to 3.3.5
+	- Fixed a bug in AutoShow module it is now working as intended.
+
+Xinhuan:
+	- Add support for GatherMate2.
+	- Update Interface to 40000, add GatherMate2 as optionaldeps.
+	- Fix up errors caused by patch 4.0.1 changes to professions and skills. Add Archaeology to the node types.
+	- Significantly reduce memory usage of Routes. Roughly 13kb less per route so if you have say 50 routes, that's 650kb less. This update has no effect on CPU usage or FPS.
+	- Fix a long standing obscure bug where a route would be created with node types that aren't selected.
+	- Register the /routes slash command for non-English users too.
+Erik Broes:
+	- Normalized 'check' for Cartographer_Waypoints and made it more 'Carbonite-taint-proof'
+	- 33000 != 30300
